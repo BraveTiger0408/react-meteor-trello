@@ -17,14 +17,16 @@ var Board = ReactMeteor.createClass({
 
   renderList: function(model) {
     var todos = todoList.findOne({_id: model});
-    return <TodoList
-      key={todos._id}
-      title={todos.title}
-      todos={todos.todos}
-      board={this.state.board}
-      id={todos._id}
-      className="flex-item"
-    />;
+    return (
+      <TodoList
+        key={todos._id}
+        title={todos.title}
+        todos={todos.todos}
+        board={this.state.board}
+        id={todos._id}
+        className="flex-item"
+      />
+    );
   },
 
   addList: function() {
@@ -40,19 +42,22 @@ var Board = ReactMeteor.createClass({
   },
 
   componentDidMount: function() {
-    createSortable('.flex-container', 'x');
+    // createSortable('.flex-container');
+    $($('.flex-container')[0]).sortable();
   },
 
   render: function() {
-    return <div className='col-xs-12'>
-      <h1>{this.state.board.title}</h1>
-      <div className="flex-container">
-        { this.state.board.lists.map(this.renderList) }
-        <button className="btn btn-default" type="button" onClick={this.addList}>
-          <span className="glyphicon glyphicon-plus"></span>
-        </button>
+    return (
+      <div className='col-xs-12'>
+        <h1>{this.state.board.title}</h1>
+        <div className="flex-container">
+          { this.state.board.lists.map(this.renderList) }
+          <button className="btn btn-default" type="button" onClick={this.addList}>
+            <span className="glyphicon glyphicon-plus"></span>
+          </button>
+        </div>
       </div>
-    </div>;
+    );
   }
 });
 
@@ -104,7 +109,9 @@ var TodoList = ReactMeteor.createClass({
   },
 
   componentDidMount: function() {
-    createSortable('#' + this.getDOMNode().id + ' .panel-body', 'y');
+    // createSortable('#' + this.getDOMNode().id + ' .panel-body');
+    // $('#' + this.getDOMNode().id + ' .panel-body').sortable();
+    $($('#' + this.getDOMNode().id + ' .panel-body')[0]).sortable();
   },
 
   render: function() {
@@ -133,6 +140,7 @@ var TodoList = ReactMeteor.createClass({
 });
 
 var Todo = React.createClass({
+
   deleteTodo: function() {
     todoList.update(
       {_id:this.props.id},
@@ -141,7 +149,7 @@ var Todo = React.createClass({
   },
   render: function() {
     var { description, ...rest } = this.props;
-    return <div  {...rest} className={cx("panel panel-default", rest.className)}>
+    return <div  {...rest} className={cx("panel panel-default sortable", rest.className)}>
       <div className="panel-body">
         {description}
         <span className="glyphicon glyphicon-remove pull-right" onClick={this.deleteTodo}></span>

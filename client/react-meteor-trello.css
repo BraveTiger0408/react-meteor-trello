@@ -18,3 +18,13 @@
     flex-basis: 300px;
     margin-right: 20px;
 }
+
+body.dragging, body.dragging * {
+  cursor: move !important;
+}
+
+.dragged {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 2000;
+}
