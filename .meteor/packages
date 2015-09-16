@@ -6,11 +6,8 @@
 
 meteor-platform
 autopublish
-insecure
 twbs:bootstrap
 reactjs:react
-meteorhacks:npm
 
 
-npm-container
 mrt:jquery-ui-sortable
