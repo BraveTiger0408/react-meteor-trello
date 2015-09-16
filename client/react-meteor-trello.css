@@ -19,12 +19,15 @@
     margin-right: 20px;
 }
 
-body.dragging, body.dragging * {
-  cursor: move !important;
+#container {
+	margin-top: 50px;
 }
 
-.dragged {
-  position: absolute;
-  opacity: 0.5;
-  z-index: 2000;
+.label {
+	color: white;
+	margin-right: 15px;
+}
+
+.inline {
+	display: inline;
 }

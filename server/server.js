@@ -43,6 +43,9 @@ function newList(boardId, name) {
 }
 
 Meteor.startup(function () {
+    todoList.remove({})
+    boards.remove({}) 
+
   	if(boards.find().count() < 1) {
   		var board1Id = boards.insert({
   			title: 'First Board',
