@@ -1,0 +1,20 @@
+/* CSS declarations go here */
+.flex-container {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+    overflow-x: scroll;
+    /*overflow: ;-y: hidden;*/
+}	
+ 
+		
+ .flex-item {
+    /*width: 150px;
+    height: 225px;*/
+    flex-shrink: 0;
+    flex-basis: 300px;
+    margin-right: 20px;
+}
